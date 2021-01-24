@@ -34,7 +34,6 @@ events = [{
 
 def task(dev):
     main(dev, events)
-    subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
 # 为每一个设备启动一个子进程，使用子进程执行各个设备的脚本
 def start():
