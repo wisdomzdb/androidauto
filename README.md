@@ -1,2 +1,3 @@
 # androidauto
 多安卓设备自动化框架
+基于python3和uiautomator2编写
