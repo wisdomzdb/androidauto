@@ -4,7 +4,7 @@ import uiautomator2 as u2
 
 #执行事件，将事件发生
 def run(d, event):
-    print('设备', d , '执行事件', event)
+    print('设备 ', d.device_info['serial'] , ' 开始执行事件', event)
     event['done'] = "done"
 
 #event应该在配置文件的start和end之间发生
@@ -12,10 +12,6 @@ def run(d, event):
 #另外需要在end之前至少发生一次，所以概率应该逐渐增大，到最后一分钟时，如果还没发生过，发生的概率应该为1，即必定返回true。
 #如果发生过，应该记录下来这个事件已经发生过了，不应该再次发生。
 def shouldStart(event):
-    #根据当前时间，start和end计算概率，如果发生，happen = 概率
-    # if happen and event.happend == False:
-    #     event.happend = True
-    print(event.get('done'))
     if event.get('done') != 'done':
         return True
     return False
