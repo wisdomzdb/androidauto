@@ -1,16 +1,10 @@
 
 import time
-
-# events = [{
-#         'event': 'faPengyouquan',
-#         'startTime': '00:00:00',
-#         'endTime': '00:10:00',
-#         'args': './发朋友圈圈素材/素材8号.txt',
-#     },]
+import uiautomator2 as u2
 
 #执行事件，将事件发生
-def run(event):
-    print('执行事件', event)
+def run(d, event):
+    print('设备', d , '执行事件', event)
     event['done'] = "done"
 
 #event应该在配置文件的start和end之间发生
@@ -27,14 +21,16 @@ def shouldStart(event):
     return False
 
 #main中每秒钟判断一次是否有事件该执行，如果有，则去执行事件
-def loop(events):
+def loop(d, events):
     while (True):
         time.sleep(1)
         for event in events:
             if shouldStart(event):
-                run(event)
+                run(d, event)
 
-#TODO 这些events应该从jsonfile里读取
+# TODO 这些events应该从jsonfile里读取，
+# jsonfile的读取应该放到start.py里，
+# main.py接收设备和事件，在设备上循环执行事件
 def parseJson():
     return [{
         'event': 'dianzan',
@@ -51,7 +47,8 @@ def parseJson():
 
 #从配置文件里得到事件，然后调用main执行事件
 def main(dev, events):
-    print('打印原有events', events)
+    print('打印dev和events', dev, events)
+    d = u2.connect(dev['devID'])
     events += parseJson()
     print('打印更新的events', events)
-    loop(events)
+    loop(d, events)

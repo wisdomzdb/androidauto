@@ -1,6 +1,5 @@
 import subprocess
 from multiprocessing import Process
-import time
 from main import main
 
 # 获取所有设备信息，存入到devices列表中，
