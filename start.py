@@ -2,11 +2,10 @@ import subprocess
 from multiprocessing import Process
 from main import main
 
-# 获取所有设备信息，存入到devices列表中，
-# 存入3个属性，devID即序列号, devDesc为设备描述, transportID为传输ID
-
 devices = []
 
+# 获取所有设备信息，存入到devices列表中，
+# 存入3个属性，devID即序列号, devDesc为设备描述, transportID为传输ID
 def getDevices():
     try:
         cmd = 'adb devices -l'
