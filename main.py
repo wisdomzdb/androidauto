@@ -2,9 +2,17 @@
 import time
 import uiautomator2 as u2
 
+from readtxnews import ReadTXNews
 #执行事件，将事件发生
 def run(d, event):
-    print('设备 ', d.device_info['serial'] , ' 开始执行事件', event)
+    print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
+    if event['event'] == 'readtxnews':
+        readnews = ReadTXNews(d)
+        readnews.run()
+        event['done'] = "done"
+    elif event['event'] == 'dianzan':
+        print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
+        event['done'] = "done"
     event['done'] = "done"
 
 #event应该在配置文件的start和end之间发生
@@ -19,10 +27,13 @@ def shouldStart(event):
 #main中每秒钟判断一次是否有事件该执行，如果有，则去执行事件
 def loop(d, events):
     while (True):
-        time.sleep(1)
+        time.sleep(10)
         for event in events:
             if shouldStart(event):
-                run(d, event)
+                try:
+                    run(d, event)
+                except expression as identifier:
+                    pass
 
 # TODO 这些events应该从jsonfile里读取，
 # jsonfile的读取应该放到start.py里，
@@ -31,11 +42,17 @@ def parseJson():
     return [{
         'event': 'dianzan',
         'startTime': '08:00:00',
-        'endTime': '10:00:00',
+        'endTime': '08:00:10',
         'args': 'https://mp.weixin.qq.com/s/OVCUgcKOo1C-zbZ-Y5Roaw',
     },
     {
         'event': 'yueduyuanwen',
+        'startTime': '07:20:00',
+        'endTime': '07:30:00',
+        'args': 'https://.....',
+    },
+    {
+        'event': 'readtxnews',
         'startTime': '19:00:00',
         'endTime': '24:00:00',
         'args': 'https://.....',
