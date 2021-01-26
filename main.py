@@ -2,6 +2,12 @@
 import time
 import uiautomator2 as u2
 
+from guanzhugzh import guanzhugzh
+from fapyq import fapyq
+from pinglunpyq import pinglunpyq
+from dianzanpyq import dianzanpyq
+
+
 from readtxnews import ReadTXNews
 #执行事件，将事件发生
 def run(d, event):
@@ -12,6 +18,19 @@ def run(d, event):
         event['done'] = "done"
     elif event['event'] == 'dianzan':
         print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
+        dianzanpyq(d)
+        event['done'] = "done"
+    elif event['event'] == 'fapyq':
+        print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
+        fapyq(d)
+        event['done'] = "done"
+    elif event['event'] == 'pinglunpyq':
+        print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
+        pinglunpyq(d)
+        event['done'] = "done"
+    elif event['event'] == 'guanzhugzh':
+        print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
+        guanzhugzh(d)
         event['done'] = "done"
     event['done'] = "done"
 
