@@ -21,7 +21,7 @@ def getDevices():
                 devices.append(dev)
         print(devices)
         res.stdout.close()
-    except expression as identifier:
+    except:
         pass
 
 events = [{
@@ -29,6 +29,7 @@ events = [{
         'startTime': '00:00:00',
         'endTime': '00:10:00',
         'args': './发朋友圈圈素材/素材8号.txt',
+        'done':'done'
     },]
 
 def task(dev):

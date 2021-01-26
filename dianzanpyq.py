@@ -8,4 +8,5 @@ def dianzanpyq(d):
     time.sleep(1)
     if d(text="赞"):
         d(text="赞").click()
+    time.sleep(1)
     

@@ -6,6 +6,8 @@ class ReadTXNews:
         OpenWeChat(d)
         self.d = d
     def run(self):
+        self.d(text="微信").click()
+        time.sleep(2)
         while True:
             if self.d(text="腾讯新闻"):
                 break

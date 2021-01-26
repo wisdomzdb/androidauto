@@ -16,7 +16,7 @@ def run(d, event):
         readnews = ReadTXNews(d)
         readnews.run()
         event['done'] = "done"
-    elif event['event'] == 'dianzan':
+    elif event['event'] == 'dianzanpyq':
         print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
         dianzanpyq(d)
         event['done'] = "done"
@@ -51,7 +51,7 @@ def loop(d, events):
             if shouldStart(event):
                 try:
                     run(d, event)
-                except expression as identifier:
+                except:
                     pass
 
 # TODO 这些events应该从jsonfile里读取，
@@ -59,23 +59,45 @@ def loop(d, events):
 # main.py接收设备和事件，在设备上循环执行事件
 def parseJson():
     return [{
-        'event': 'dianzan',
-        'startTime': '08:00:00',
-        'endTime': '08:00:10',
+        'event': 'dianzanpyq',
+        'startTime': '10:00:00',
+        'endTime': '11:00:00',
         'args': 'https://mp.weixin.qq.com/s/OVCUgcKOo1C-zbZ-Y5Roaw',
+        'done':'done'
     },
     {
         'event': 'yueduyuanwen',
-        'startTime': '07:20:00',
-        'endTime': '07:30:00',
+        'startTime': '10:00:00',
+        'endTime': '11:00:00',
         'args': 'https://.....',
+        'done':'done'
     },
     {
         'event': 'readtxnews',
-        'startTime': '19:00:00',
-        'endTime': '24:00:00',
+        'startTime': '10:00:00',
+        'endTime': '11:00:00',
         'args': 'https://.....',
-    },]
+        'done':'done'
+    },
+    {
+        'event': 'fapyq',
+        'startTime': '10:00:00',
+        'endTime': '11:00:00',
+        'args': 'https://mp.weixin.qq.com/s/OVCUgcKOo1C-zbZ-Y5Roaw',
+        'done':'done'
+    },
+    {
+        'event': 'guanzhugzh',
+        'startTime': '10:00:00',
+        'endTime': '11:00:00',
+        'args': 'https://mp.weixin.qq.com/s/OVCUgcKOo1C-zbZ-Y5Roaw',
+    },
+    {
+        'event': 'pinglunpyq',
+        'startTime': '10:00:00',
+        'endTime': '11:00:00',
+        'args': 'https://mp.weixin.qq.com/s/OVCUgcKOo1C-zbZ-Y5Roaw',
+    }]
 
 #从配置文件里得到事件，然后调用main执行事件
 def main(dev, events):
