@@ -24,13 +24,7 @@ def getDevices():
     except:
         pass
 
-events = [{
-        'event': 'faPengyouquan',
-        'startTime': '00:00:00',
-        'endTime': '00:10:00',
-        'args': './发朋友圈圈素材/素材8号.txt',
-        'done':'done'
-    },]
+events = []
 
 def task(dev):
     main(dev, events)
