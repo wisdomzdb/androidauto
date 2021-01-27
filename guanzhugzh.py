@@ -15,9 +15,12 @@ def guanzhugzh(d):
     now_line = random.randint(0, len(gzhname)-1)
     d.send_keys(gzhname[now_line], clear=True)
     time.sleep(1)
-    d(text="小程序、公众号、文章、朋友圈和表情等").click()
-    time.sleep(10)
+    if d(text="小程序、公众号、文章、朋友圈和表情等"):
+        d(text="小程序、公众号、文章、朋友圈和表情等").click()
+    else:
+        d.click(0.183, 0.215)
+    time.sleep(30)
     d.click(0.442, 0.31)
-    time.sleep(2)
+    time.sleep(30)
     d(text="关注").click()
-    time.sleep(5)
+    time.sleep(30)

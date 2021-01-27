@@ -6,7 +6,7 @@ from jinrupyq import jinrupyq
 def fapyq(d):
     jinrupyq(d)
     time.sleep(2)
-    d.long_click(0.925, 0.071, 0.7)
+    d.long_click(0.925, 0.071, 1)
     time.sleep(1)
     try:
         pyq_fi = open("朋友圈文案.txt",mode="r",encoding="utf-8").read().split("\n")
