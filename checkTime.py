@@ -1,4 +1,5 @@
 import datetime
+import random
 
 def TimeChuli(Time):
     newTime = Time.split(":")
@@ -14,6 +15,16 @@ def checkTime(startTime, endTime):
     nowTime = datetime.datetime.now().strftime('%X')
     now_time = TimeChuli(nowTime)
     if now_time >= start_time and now_time <= end_time:
-        return True
+        if end_time - now_time <= 60:
+            return True
+        else:
+            return checkGailv(start_time, end_time)
     else:
         return False
+
+def checkGailv(start_time, end_time):
+    num = random.randint(start_time, end_time)
+    if num < end_time - 10:
+        return False
+    else:
+        return True
