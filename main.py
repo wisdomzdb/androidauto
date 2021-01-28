@@ -6,14 +6,13 @@ from guanzhugzh import guanzhugzh
 from fapyq import fapyq
 from pinglunpyq import pinglunpyq
 from dianzanpyq import dianzanpyq
-from readtxnews import ReadTXNews
+from readtxnews import readtxnews
 from qxguanzhugzh import qxguanzhugzh
 #执行事件，将事件发生
 def run(d, event):
     print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
     if event['event'] == 'readtxnews':
-        readnews = ReadTXNews(d)
-        readnews.run()
+        readtxnews(d)
     elif event['event'] == 'dianzanpyq':
         dianzanpyq(d)
     elif event['event'] == 'fapyq':
@@ -22,10 +21,8 @@ def run(d, event):
         pinglunpyq(d)
     elif event['event'] == 'guanzhugzh':
         guanzhugzh(d)
-        print(d)
     elif event['event'] == 'qxguanzhugzh':
         qxguanzhugzh(d)
-    event['times'] = event['times'] - 1
 
 #event应该在配置文件的start和end之间发生
 #判断当前时间是否在start和end之间，如果在，则有概率性发生该事件，如果发生，则返回true。
@@ -33,7 +30,7 @@ def run(d, event):
 #如果发生过，应该记录下来这个事件已经发生过了，不应该再次发生。
 def shouldStart(event):
     if event['times'] != 0:
-        # return checkTime(event.get('startTime'), event.get('endTime'))
+        return checkTime(event['startTime'], event['endTime'], event['times'])
         return True
     return False
 

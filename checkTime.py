@@ -9,7 +9,7 @@ def TimeChuli(Time):
     new_time = Hour * 3600 + Minute * 60 + Second
     return new_time
 
-def checkTime(startTime, endTime):
+def checkTime(startTime, endTime, times):
     start_time = TimeChuli(startTime)
     end_time = TimeChuli(endTime)
     nowTime = datetime.datetime.now().strftime('%X')
@@ -18,13 +18,13 @@ def checkTime(startTime, endTime):
         if end_time - now_time <= 60:
             return True
         else:
-            return checkGailv(start_time, end_time)
+            return checkGailv(start_time, end_time, times)
     else:
         return False
 
-def checkGailv(start_time, end_time):
+def checkGailv(start_time, end_time, times):
     num = random.randint(start_time, end_time)
-    if num < end_time - 10:
+    if num < end_time - 10 * times:
         return False
     else:
         return True
