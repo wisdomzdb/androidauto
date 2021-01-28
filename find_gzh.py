@@ -12,5 +12,5 @@ def find_gzh(gzh_name,d):
             d(text=gzh_name).click()
             break
         else:
-            d.swipe(0.459,0.799,0.471,0.345)
+            d.swipe("up", 0.6)
             time.sleep(2)

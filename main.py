@@ -22,6 +22,7 @@ def run(d, event):
         pinglunpyq(d)
     elif event['event'] == 'guanzhugzh':
         guanzhugzh(d)
+        print(d)
     elif event['event'] == 'qxguanzhugzh':
         qxguanzhugzh(d)
     event['times'] = event['times'] - 1
@@ -84,14 +85,14 @@ def parseJson():
         'startTime': '12:00:00',
         'endTime': '13:00:00',
         'args': 'https://.....',
-        'times':0
+        'times':1
     },
     {
         'event': 'qxguanzhugzh',
         'startTime': '12:00:00',
         'endTime': '21:00:00',
         'args': 'https://.....',
-        'times':1
+        'times':0
     },
     {
         'event': 'pinglunpyq',
