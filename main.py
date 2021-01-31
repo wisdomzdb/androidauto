@@ -8,6 +8,8 @@ from pinglunpyq import pinglunpyq
 from dianzanpyq import dianzanpyq
 from readtxnews import readtxnews
 from qxguanzhugzh import qxguanzhugzh
+from yueduwenzhang import yueduwenzhang
+
 #执行事件，将事件发生
 def run(d, event):
     print('设备 ', d.device_info['serial'] , ' 开始执行事件', event['event'])
@@ -23,6 +25,8 @@ def run(d, event):
         guanzhugzh(d)
     elif event['event'] == 'qxguanzhugzh':
         qxguanzhugzh(d)
+    elif event['event'] == 'yueduwenzhang':
+        yueduwenzhang(d,event['essayName'])
 
 #event应该在配置文件的start和end之间发生
 #判断当前时间是否在start和end之间，如果在，则有概率性发生该事件，如果发生，则返回true。
@@ -30,7 +34,7 @@ def run(d, event):
 #如果发生过，应该记录下来这个事件已经发生过了，不应该再次发生。
 def shouldStart(event):
     if event['times'] != 0:
-        return checkTime(event['startTime'], event['endTime'], event['times'])
+        # return checkTime(event['startTime'], event['endTime'], event['times'])
         return True
     return False
 
@@ -82,7 +86,7 @@ def parseJson():
         'startTime': '12:00:00',
         'endTime': '13:00:00',
         'args': 'https://.....',
-        'times':1
+        'times':0
     },
     {
         'event': 'qxguanzhugzh',
@@ -97,6 +101,14 @@ def parseJson():
         'endTime': '14:00:00',
         'args': 'https://.....',
         'times':0
+    },
+    {
+        'event': 'yueduwenzhang',
+        'startTime': '13:00:00',
+        'endTime': '14:00:00',
+        'args': 'https://.....',
+        'times':0,
+        'essayName':'essay_name'
     }]
 
 #从配置文件里得到事件，然后调用main执行事件

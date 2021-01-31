@@ -2,7 +2,7 @@ import time
 import random
 from jinrupyq import jinrupyq
 
-def pinglunpyq(d):
+def pinglunpyq(d): # 评论朋友圈
     jinrupyq(d)
     time.sleep(2)
     d(description="评论").click()

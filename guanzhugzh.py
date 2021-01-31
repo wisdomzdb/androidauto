@@ -2,7 +2,7 @@ import time
 import random
 from wechat_home import wechat_home
 
-def guanzhugzh(d):
+def guanzhugzh(d): # 随机关注公众号
     wechat_home(d)
     time.sleep(1)
     d(text="微信").click()

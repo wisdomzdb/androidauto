@@ -1,7 +1,7 @@
 import time
 from jinrupyq import jinrupyq
 
-def dianzanpyq(d):
+def dianzanpyq(d): # 点赞朋友圈
     jinrupyq(d)
     time.sleep(3)
     d(description="评论").click()

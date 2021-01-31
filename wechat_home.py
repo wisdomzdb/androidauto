@@ -7,7 +7,7 @@ def wechat_home(d):
     d(text="微信").click()
     time.sleep(5)
     while True:
-        if d(text="微信") and d(text="通讯录") and d(text="发现"):
+        if d(text="微信") and d(text="通讯录") and d(text="发现") and d(text="我"):
             break
         else:
             d.press("back")

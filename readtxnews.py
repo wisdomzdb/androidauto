@@ -2,7 +2,7 @@ import time
 import random
 from checkxiaoxi import checkxiaoxi
 
-def readtxnews(d):
+def readtxnews(d): # 阅读腾讯新闻
     if checkxiaoxi(d):
         d(text="微信").double_click()
         time.sleep(2)

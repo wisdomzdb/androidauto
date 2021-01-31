@@ -2,8 +2,7 @@ import time
 import random
 from jinrupyq import jinrupyq
 
-
-def fapyq(d):
+def fapyq(d): # 发朋友圈
     jinrupyq(d)
     time.sleep(2)
     d.long_click(0.925, 0.071, 1)

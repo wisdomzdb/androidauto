@@ -2,7 +2,7 @@ import time
 from wechat_home import wechat_home
 import random
 
-def qxguanzhugzh(d):
+def qxguanzhugzh(d): # 随机取消关注公众号
     wechat_home(d)
     time.sleep(1)
     d(text="通讯录").click()
